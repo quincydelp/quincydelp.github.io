@@ -1,15 +1,171 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Alette Media</title>
-	<link rel="icon" href="logo.png">
+        <!-- <title>Alette Media</title>
+        <img src="Assets/transparent.png" width="200"> -->
+	<link rel="icon" href="Assets/29.png">
     </head>
-    <body>
-        <p>Hello, welcome to my website.</p>
-    
+    <body> 
+        <style>
+            body
+            {
+                font-family: 'Roboto', sans-serif;
+                font-size: 20px;
+                background-color:#fffff5;
+                margin-right: 450px;
+                margin-left: 450px;
+                line-height:1.1
+            }
+
+        </style>
+        <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+
+        <center>
+        <img src="Assets/transparent.png" width="200">
+        <p> Please check back after midnight on November 30th 2022 </p>
+        </center>
+
+
+        <!-- <center>
+
+            <h1> Alette Media </h1>
+            <p align="justify">
+                The FFT is what compelled me to start building in computer music. If you’re not familiar, the Fast Fourier Transform (FFT) is an algorithm that deconstructs a complex sound wave into a linear combination of fundamental frequencies (figure 1).
+            </p>
+            <table>
+                <tr>
+                    <img src="Assets/f1_a.png" alt = "Individuals">
+                    <img src="Assets/f1_c.png" alt = "Combined">
+                    <img src="Assets/f1_b.png" alt = "Freq Dom">
+                </tr>
+            </table> 
+
+            <p align="justify">
+                The expression of intangible descriptors like an instrument’s timbre in concrete mathematical terms, enabled by the FFT, creates a powerful precedent and motivates ideas like modeling creativity and enhancing creative expression. Indeed, this mindset is the basis for Alette, a tool that lets you turn simple musical inputs like a melody you hum or a rhythm you tap onto your phone into a complete song that you’d be excited to share with anybody. In the world of Dalle-2 and Jasper, where AI and ML systems allow for seamless expressions of creativity, there’s a notable gap where music tools should stand.
+            </p>
+
+            <p align="justify">
+                The past year+ has been spent developing software that aims to fill that gap and this blog is a description of what I built and what the next steps are.
+            </p>
+        </center>
+        <h4> Analysis in T </h4>
+        <center>
+            <p align="justify">
+                We live our lives in the time domain (T). When you look a sound wave, you’re seeing how air pressure at a certain point in space changes over time. Examining audio in the time domain isn’t just intuitive, it can lead to meaningful understandings about the sound.
+            </p>
+            <p align="justify">
+                When musicians talk about the “envelope” of a sound, they’re mostly referring to how the volume changes over time. Most audio tools model the envelope in four phases: Attack, Decay, Sustain, and Release (ADSR) (figure 2). One of the first things I built was a tool that detects the envelope (figure 3). Envelope is especially important in percussion instruments and really can change your entire perception of the sound. The figure below shows a snare and a tom being made just by modulating the envelope of the sound (figure 4).
+            </p>
+
+            <img src="Assets/_CQT_attack_hum7.png" alt = "Constant Q">
+
+            <p align="justify">
+                There are all sorts of things you can learn from a sound by looking at it in the time domain — power, signal to noise ratio, and envelope just to name a few.
+            </p>
+        </center>
+        <h4> Analysis in F </h4>
+        <center>
+            <p align="justify">
+                The FFT allows us to look at a snippet of audio in the frequency domain (F). Rather than seeing how the wave changes over time, we’re getting the weight of all the frequencies sounding during that clip.
+            </p>
+            <p align="justify">
+                The reason that a piano playing an “a” sounds different than a cello playing the same note is that they have different timbres. The note “a” has a frequency of 440 Hz. When an instrument plays a note, however, we don’t just hear one frequency. We hear many frequencies that are all integer multiples of the fundamental. In the case of an “a,” that means we’re hearing 440Hz, 880Hz, 1320Hz, etc. The timbre of an instrument is the relationship of the amplitudes of these frequencies to one another (figure 5).
+            </p>
+            <p align="justify">
+                In an effort to convince you this really works, listen to individual sine waves get added together. When only one is playing, it will sound computerized. As more and more get layered on top of one another, it starts to sound like a real 
+                instrument (Figure 6).
+            </p>
+
+            <video width="640" height="360" controls>
+                <source src="Assets/fig6.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video> 
+
+            <p align="justify">
+                Looking at the frequency spectrum of a sound is immensely powerful. It’s the basis of how we do speech to text, and source separation. To combine the first two ideas, think about what it would look like to see the frequency spectrum evolve over time (Figure 7). This is called a spectrogram. Because machine learning models have advanced farther for image generation than for music, there is actually research being done on how to process and generate spectrograms rather than raw audio!
+            </p>
+        </center>
+
+        <h4> Synthesizers </h4>
+        <center>
+            <p align="justify">
+                Synthesizers are a critical step in the process because they allow us to convert information like pitch and duration into sound. Musicians have come up with a ton of creative ways to turn information from sound. From adding sine waves together to applying filters to white noise to more technical approaches like frequency modulation (developed by John Chowning here at Stanford), the search for new ways to generate sound is persistent because sounds have such a big impact on a listener’s perception of the song and its connection to a musical era. Our goal is to innovate on workflow so rather than trying to make sounds people have never heard, the synthesizers we write need to create recognizable sounds that ground music in a particular genre.
+            </p>
+            <p align="justify">
+                Additive synthesis is the process of combining waves of different shapes and frequencies to create complex tones. The Alette additive synth is really good at making pitched sounds that we can use to depict melodies, bass lines, and harmonies. Not only can it make different types of sounds, it can make sounds that fit into a variety of styles. The melody line might come from a pop song, the bass from a jazz standard, and the pad out of a trance hit (Figure 11).
+            </p>
+            <p align="justify">
+                Subtractive synthesis is the process of taking random noise and applying filters to take control of the sound. This method is good at generating percussive sounds like a snare or hi-hat or tom. Take a listen to this “drum kit” which is modeled on a disco setup (Figure 12).
+            </p>
+            <p align="justify">
+                Granular synthesis is a technique that lets us chop up recordings, like the inputs we’re provided, and create new sounds from small chunks, or grains. Not only does this lend itself to creating new sounds, it makes the sounds more complex and unpredictable than anything we could make with physical instruments or with additive or subtractive synths. Nowadays, electronic instruments are not limited to use in “electronic music” so listeners are accustomed to hearing synthetic and acoustic material paired together. This voice is singing on top of a granular synthesizer operating on a guitar (Figure 13).
+            </p>
+        </center>
+
+        <h4> Processors </h4>
+        <center>
+            <p align="justify">
+            </p>
+        </center>
+
+        <h4> The Jump to ML: Note Detection </h4>
+        <center>
+            <p align="justify">
+                When I started this project I talked to another founder who is a pro at machine learning for audio signal processing. I was flustered because I knew I had a lot to learn in this field. His advice was to use traditional techniques where I can and, when those don’t work, use machine learning to tackle specific challenges and well-defined problems. 
+            </p>
+            <p align="justify">
+                I hit this wall with polyphonic note detection and it seemed like others had too. There are a variety of signal processing techniques (link to paper) that, frankly, don’t get the job done. Google took the field forward with SPICE (link), a self-supervised model for pitch estimation. Still, it’s not robust enough to handle low quality vocal audio. I took the opportunity to write a machine learning library for myself. I relished the labor of writing the back prop function from scratch and spent several evenings feeling my M1 MacBook Pro heat up as it pushed the learning curve higher and higher.
+            </p>
+            <p align="justify">
+                Note detection is a critical step in getting information from audio because it helps us convert “sound” to “music.” I developed a note detection algorithm that combines machine learning and signal processing techniques and is able to outperform SPICE on the data I need to use it on. Rather than creating a pitch estimation for each frame, my algorithm separates the tasks of estimating whether a note is playing or not and evaluating the pitch. Finally, we can group this information into Notes (Figure 8).   
+            </p>
+            <p align="justify">
+                Since then, ML has become more than an analysis tool for me and I’ve expanded my library to include far more than vanilla NNs. We use evolutionary algorithms, decision forests, CNNs, and more to tackle complex generative tasks that can’t be solved with traditional methods.    
+            </p>
+        </center>
+
+        <h4> Musical Structures </h4>
+        <center>
+            <p align="justify">
+            </p>
+        </center>
+
+        <h4> Motivic Variation: Creating a Theme </h4>
+        <center>
+            <p align="justify">
+                I took a class on symphonies in college taught by Walter Frisch. He wrote a book called Brahms and the Principle of Developing Variation which has been very inspirational. At a basic level it talks about how the composer Johannes Brahms takes two to four note motifs and develops them into the melodies and themes that make up his symphonies. 
+            </p>
+            <p align="justify">
+                Creating meaningful themes is a challenge because there are seemingly limitless possibilities. Grounding that theme in a germ of an idea provides the constraints necessary to make this a problem that is easier to imagine a solution for. 
+            </p>
+            <p align="justify">
+                One of the most exciting components of this project was making tools to extend note sequences. This is where we start to see the power of generative music. By changing the motif or by adjusting the conditions that the generator uses, you get a variety of outputs (Figure 9).  
+            </p>
+        </center>
+
+        <h4> Creating complete songs </h4>
+        <center>
+            <p align="justify">
+                Much like a startup, the reason that making music is so hard isn’t because people can’t come up with an idea; it’s everything else. Almost everybody has an original tune they sing to themselves as the walk down the road but the reason those ideas don’t get turned into music is because creating a song involves harmonizing and layering tens of tracks on top of each other, mixing them so they complement one another, mastering and applying effects that grab attention and highlight meaning, and a whole lot more. So how do we go about making music?  
+            </p>
+            <p align="justify">
+                The first step is to analyze inputs and distill as much meaningful information from them as we can. Then, annotations like “genre” and “busyness” are used to condition the song model I developed. Finally, the song model and the input analysis are fed into an expert system and machine learning model which work together to compose, produce, and record a song. (Figure 10).  
+            </p>
+            <p align="justify">
+                The interface for this is wrapped up in an iOS app that I developed as a prototype to demonstrate the core experience of turning your inputs into music.   
+            </p>
+        </center>
+
+        <h4> Next Steps </h4>
+        <center>
+            <p align="justify">
+                I’m proud of the process I took and the magnitude of the contribution but there’s no question that several improvements need to occur before Alette makes songs that are ready to share. Since Stability AI open sourced their stable diffusion model, there is a lot of excitement around generative AI. Amongst classmates and in the media, conversations about the possibilities of generative technology is being had more frequently and with more information than ever before. It’s with excitement and vigor that I continue working on this project.
+            </p>
+        </center>
+        
         <audio controls>
             <source src="Assets/do1.wav" type="audio/wav">
-        </audio>
+        </audio> -->
     </body>
 </html>
 
