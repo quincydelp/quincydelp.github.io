@@ -1,23 +1,43 @@
- /* Style the header */
+ body
+{
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    background-color:#fffff5;
+    line-height:1.1
+}
+
+.squeezed {
+    margin-right: 20%;
+    margin-left: 20%;
+}
+
 .header {
+  z-index: -1;
   padding: 10px 16px;
-  background: #555;
-  color: #f1f1f1;
+  background: rgba(0,0,0,0.0);
 }
 
-/* Page content */
-.content {
-  padding: 16px;
-}
-
-/* The sticky class is added to the header with JS when it reaches its scroll position */
 .sticky {
   position: fixed;
   top: 0;
   width: 100%
 }
 
-/* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
-.sticky + .content {
-  padding-top: 102px;
-} 
+.column {
+  float: left;
+  width: 33.33%;
+/*  padding: 0px;*/
+}
+
+.column50 {
+  float: left;
+  width: 48%;
+  padding: 1%;
+}
+
+/* Clear floats after image containers */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
